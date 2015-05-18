@@ -1,0 +1,61 @@
+html{
+  background: url(../images/banderaDeEspaña.svg.png) no-repeat center center fixed;
+  background-size: cover;
+}
+
+
+body{
+  background: rgba(0,0,0,0.1);
+}
+
+.items p{
+  display: inline-block;
+}
+
+.optionsLeft > li > img {
+  height: 50%;
+  width: 70%;
+}
+
+.optionsLeft > li{
+  margin-top: 5%;
+}
+
+.optionsRight > li > img {
+  height: 50%;
+  width: 70%;
+}
+
+.optionsRight > li{
+  margin-top: 5%;
+}
+
+.bandera img{
+  height: 60%;
+  width: 80%;
+}
+.bandera{
+  margin: 20% auto;
+}
+
+.divLeft{
+  float: left;
+  width: 25%;
+}
+
+.divMiddle{
+  vertical-align: middle;
+  float: left;
+  width: 50%;
+}
+
+.divRight{
+  float: right;
+  width: 25%;
+}
+/*.images img {
+  height: 40%;
+  width: 40%;
+  display: block;
+  margin-top: 2em;
+}*/
