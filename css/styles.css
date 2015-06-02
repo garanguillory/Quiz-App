@@ -1,5 +1,5 @@
 html{
-  background: url(../images/banderaDeEspaña.svg.png) no-repeat center center fixed;
+  background: url(../images/UnitedStatesFlag.svg.png) no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -8,9 +8,46 @@ body{
   background: rgba(0,0,0,0.1);
 }
 
-.items p{
-  display: inline-block;
+/*~~~~~~~~~~~~ howToPlay Divs ~~~~~~~~~~~*/
+/*~~~~~~ Displays | Sizes | Positions ~~~~~~*/
+
+#howToPlay1{
+  /*display: none;*/
+  position: absolute;
+  top: 30%;
+  left: 25%;
+  width: 50%;
+  border: 5px solid orange;
+  background: rgba(0,0,0,0.3);
+  color: white;
 }
+
+#howToPlay2{
+  /*display: none;*/
+  position: absolute;
+  top: 35%;
+  left: 25%;
+  width: 50%;
+  border: 5px solid green;
+  background: rgba(0,0,0,0.3);
+  color: white;
+}
+
+#howToPlay3{
+  /*display: none;*/
+  position: absolute;
+  top: 40%;
+  left: 25%;
+  width: 50%;
+  border: 5px solid blue;
+  background: rgba(0,0,0,0.3);
+  color: white;
+}
+
+
+
+/*~~~~~~~~~~~~ CA Left options ~~~~~~~~~~~*/
+/*~~~~~~ Displays | Sizes | Positions ~~~~~~*/
 
 .optionsLeft > li > img {
   height: 50%;
@@ -21,6 +58,10 @@ body{
   margin-top: 5%;
 }
 
+
+/*~~~~~~~~~~~~ CA Right options ~~~~~~~~~~~*/
+/*~~~~~~ Displays | Sizes | Positions ~~~~~~*/
+
 .optionsRight > li > img {
   height: 50%;
   width: 70%;
@@ -30,13 +71,21 @@ body{
   margin-top: 5%;
 }
 
-.bandera img{
+
+/*~~~~~~~~~~~~~~~ flag ~~~~~~~~~~~~~~~*/
+/*~~~~~~ Displays | Sizes | Positions ~~~~~~*/
+
+#flag img{
   height: 60%;
   width: 80%;
 }
-.bandera{
+#flag{
   margin: 20% auto;
 }
+
+
+/*~~~~ Div Containing L/R & flag Options ~~~~*/
+/*~~~~~~ Displays | Sizes | Positions ~~~~~~*/
 
 .divLeft{
   float: left;
@@ -53,9 +102,36 @@ body{
   float: right;
   width: 25%;
 }
-/*.images img {
-  height: 40%;
-  width: 40%;
-  display: block;
-  margin-top: 2em;
-}*/
+
+
+
+/*~~~~ Class added with JS ~~~~*/
+/*~~~~~~ Highlighted Borders ~~~~~~*/
+
+
+.wrongAnswer {
+  border: 5px solid red;
+}
+
+.correctAnswer {
+  border: 5px solid lightgreen;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
