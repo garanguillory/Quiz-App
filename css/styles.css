@@ -46,28 +46,15 @@ body{
 
 
 
-/*~~~~~~~~~~~~ CA Left options ~~~~~~~~~~~*/
+/*~~~~~~~~~~~~ State options ~~~~~~~~~~~*/
 /*~~~~~~ Displays | Sizes | Positions ~~~~~~*/
 
-.optionsLeft > li > img {
+.options > li > img {
   height: 50%;
   width: 70%;
 }
 
-.optionsLeft > li{
-  margin-top: 5%;
-}
-
-
-/*~~~~~~~~~~~~ CA Right options ~~~~~~~~~~~*/
-/*~~~~~~ Displays | Sizes | Positions ~~~~~~*/
-
-.optionsRight > li > img {
-  height: 50%;
-  width: 70%;
-}
-
-.optionsRight > li{
+.options > li{
   margin-top: 5%;
 }
 
@@ -117,11 +104,21 @@ body{
   border: 5px solid lightgreen;
 }
 
+.selected {
+  border: 5px solid white;
+}
 
 
 
 
+#threeButtons button{
+  display: inline-block;
 
+}
+
+#threeButtons{
+
+}
 
 
 

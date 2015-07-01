@@ -12,8 +12,9 @@
   <link rel="stylesheet" href="css/styles.css">
   
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script type="text/javascript" src="js/data.js"></script>
+  
   <script type="text/javascript" src="js/app.js"></script>
+ <!-- <script type="text/javascript" src="js/appExp.js"></script> -->
 
 </head>
 
@@ -21,7 +22,7 @@
 
   <div id="introContent" class="container">
     <div class="row">
-      <h1 class="text-center">States Flags</h1>
+      <h1 class="text-center">States' Flags</h1>
       <h3 class="text-center">To what state does this flag belong?</h3>
       <h4 class="text-center">Question <span>1</span> of 50</h4>
     </div>
@@ -41,7 +42,7 @@
 
 <div id="howToPlay3" class="hidden">
   <p class="">Click the "next" button towards the bottom of the page to see the next state flag question. Guess again to test your knowledge of the 50 states and their flags. Good luck!</p>
-  <button id="next3" class="btn btn-default center-block" type="submit">next</button>
+  <button id="start" class="btn btn-default center-block" type="submit">start</button>
   <p></p>
 </div>
 
@@ -50,14 +51,14 @@
     <div class="row">
 
         <div class="divLeft">
-          <ul class="optionsLeft list-unstyled">
-            <li id="one">
-              <img class="center-block correctAnswer" src="images/state_location/AlabamaStateLocation.svg.png" alt="Alabama">
+          <ul class="options list-unstyled">
+            <li id="option1">
+              <img class="center-block" src="images/state_location/AlabamaStateLocation.svg.png" alt="Alabama">
             </li>
-            <li id="two">
+            <li id="option2">
               <img class="center-block" src="images/state_location/AlaskaStateLocation.svg.png" alt="Alaska">
             </li>
-            <li id="three">
+            <li id="option3">
               <img class="center-block" src="images/state_location/GeorgiaStateLocation.svg.png" alt="Georgia">
             </li>
           </ul>
@@ -70,14 +71,14 @@
         </div>
 
         <div class="divRight">
-          <ul class="optionsRight list-unstyled">
-            <li id="four">
+          <ul class="options list-unstyled">
+            <li id="option4">
               <img class="center-block" src="images/state_location/IllinoisStateLocation.svg.png" alt="Illinois">
             </li>
-            <li id="five">
-              <img class="center-block wrongAnswer" src="images/state_location/LouisianaStateLocation.svg.png" alt="Louisiana">
+            <li id="option5">
+              <img class="center-block" src="images/state_location/LouisianaStateLocation.svg.png" alt="Louisiana">
             </li>
-            <li id="six">
+            <li id="option6">
               <img class="center-block" src="images/state_location/MontanaStateLocation.svg.png" alt="Montana">
             </li>
           </ul>
@@ -87,14 +88,18 @@
   </div>
 <!-- </div> -->
 
-<!-- <div class="secondaryContent"> -->
-  <div id="secondaryContent" class="container">
-    <div class="row">
-      <h4 class="text-center">Tu Repuest <span></span></h4>
+
+<div id="secondaryContent" class="container">
+  <div class="row">
+    <h4 class="text-center">Your choice: <span id="yourChoice"></span></h4>
+    <div id="threeButtons" class="text-center">
+      <button id="previous" class="btn btn-default center-block" type="submit">previous</button>
       <button id="enter" class="btn btn-default center-block" type="submit">enter</button>
+      <button id="next" class="btn btn-default center-block" type="submit">next</button>
     </div>
   </div>
-<!-- </div> -->
+</div>
+
 
 <div id="test" class="container">
   <div class="row">
