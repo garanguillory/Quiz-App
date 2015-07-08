@@ -14,7 +14,6 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   
   <script type="text/javascript" src="js/app.js"></script>
- <!-- <script type="text/javascript" src="js/appExp.js"></script> -->
 
 </head>
 
@@ -24,29 +23,40 @@
     <div class="row">
       <h1 class="text-center">States' Flags</h1>
       <h3 class="text-center">To what state does this flag belong?</h3>
-      <h4 class="text-center">Question <span>1</span> of 50</h4>
+      <h4 class="text-center">Question <span id="questionNumber">1</span> of 50</h4>
     </div>
   </div>
 
-<div id="howToPlay1" class="">
-  <p class="text-center">Match the flag to its corresponding State (colored red on the maps). You have six options to choose from. Choose one of the options on either side of the flag and click "ENTER".</p>
+<!-- <div id="howToPlay1" class="">
+  <p class="text-center">Match the flag to its corresponding State (colored red on the maps). You have six options to choose from. Choose one of the options on either side of the flag and click "Submit Answer".</p>
   <button id="next1" class="btn btn-default center-block" type="submit">Next</button>
   <p></p>
 </div>
 
 <div id="howToPlay2" class="hidden">
-  <p class="">The correct answer will be highlighted in green, and the incorrect answer will be highlighted in red. Click "next".</p>
-  <button id="next2" class="btn btn-default center-block" type="submit">next</button>
+  <p class="">A correct answer will be highlighted in green, and an incorrect answer will be highlighted in red.</p>
+  <button id="next2" class="btn btn-default center-block" type="submit">Next</button>
   <p></p>
 </div>
 
 <div id="howToPlay3" class="hidden">
-  <p class="">Click the "next" button towards the bottom of the page to see the next state flag question. Guess again to test your knowledge of the 50 states and their flags. Good luck!</p>
-  <button id="start" class="btn btn-default center-block" type="submit">start</button>
+  <p class="">Click the "Next Question" button near the bottom of the page to see the next state flag question. Guess again to test your knowledge of the 50 states and their flags. Good luck!</p>
+  <button id="start" class="btn btn-default center-block" type="submit">Start Game</button>
   <p></p>
+</div> -->
+
+<div id="gameOver" class="hidden">
+  <h4>Nailed it!</h4>
+  <ul id="nailedIt">
+    
+  </ul>
+  <h4>Almost!</h4>
+  <ul id="almost">
+    
+  </ul>
 </div>
 
-<!-- <div class="mainContent"> -->
+
   <div id="mainContent" class="container">
     <div class="row">
 
@@ -66,7 +76,7 @@
 
         <div class="divMiddle">
           <div id="flag">
-            <img class="center-block" src="images/state_flag/AlaskaStateFlag.svg.png" alt="Alaska">
+            <img class="center-block" src="images/state_flag/AlabamaStateFlag.svg.png" alt="Alabama">
           </div>
         </div>
 
@@ -86,16 +96,14 @@
 
     </div>
   </div>
-<!-- </div> -->
 
 
 <div id="secondaryContent" class="container">
   <div class="row">
     <h4 class="text-center">Your choice: <span id="yourChoice"></span></h4>
-    <div id="threeButtons" class="text-center">
-      <button id="previous" class="btn btn-default center-block" type="submit">previous</button>
-      <button id="enter" class="btn btn-default center-block" type="submit">enter</button>
-      <button id="next" class="btn btn-default center-block" type="submit">next</button>
+    <div id="questionButtons" class="text-center">
+      <button id="submitAnswer" class="btn btn-default center-block" type="submit">Submit Answer</button>
+      <button id="next" class="btn btn-default center-block" type="submit">Next Question</button>
     </div>
   </div>
 </div>

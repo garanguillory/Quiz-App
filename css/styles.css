@@ -105,24 +105,30 @@ body{
 }
 
 .selected {
-  border: 5px solid white;
+  /*border: 1px solid white;*/
 }
 
 
+/*~~~~~~~~~~~~ Question Buttons ~~~~~~~~~~~*/
+/*~~~~~~ Displays | Sizes | Positions ~~~~~~*/
 
-
-#threeButtons button{
+#questionButtons button{
   display: inline-block;
-
-}
-
-#threeButtons{
-
 }
 
 
+/*~~~~~~~~~~~~ Game Results ~~~~~~~~~~~*/
+/*~~~~~~ Displays | Sizes | Positions ~~~~~~*/
 
-
+#gameOver{
+  position: absolute;
+  top: 40%;
+  left: 25%;
+  width: 60%;
+  border: 5px solid orange;
+  background: rgba(0,0,0,0.3);
+  color: white;
+}
 
 
 
