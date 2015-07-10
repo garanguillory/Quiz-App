@@ -13,7 +13,7 @@
   
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   
-  <script type="text/javascript" src="js/app.js"></script>
+  <script type="text/javascript" src="js/app2.js"></script>
 
 </head>
 
@@ -23,7 +23,7 @@
     <div class="row">
       <h1 class="text-center">States' Flags</h1>
       <h3 class="text-center">To what state does this flag belong?</h3>
-      <h4 class="text-center">Question <span id="questionNumber">1</span> of 50</h4>
+      <h4 id="questionStatus" class="text-center">Question <span id="questionNumber">1</span> of 50</h4>
     </div>
   </div>
 
@@ -47,6 +47,7 @@
 
 <div id="gameOver" class="hidden">
   <h4>Nailed it!</h4>
+  <h4>You answered <span id="numberCorrect"></span> questions corectly.</h4>
   <ul id="nailedIt">
     
   </ul>
@@ -62,13 +63,13 @@
 
         <div class="divLeft">
           <ul class="options list-unstyled">
-            <li id="option1">
+            <li id="option0">
               <img class="center-block" src="images/state_location/AlabamaStateLocation.svg.png" alt="Alabama">
             </li>
-            <li id="option2">
+            <li id="option1">
               <img class="center-block" src="images/state_location/AlaskaStateLocation.svg.png" alt="Alaska">
             </li>
-            <li id="option3">
+            <li id="option2">
               <img class="center-block" src="images/state_location/GeorgiaStateLocation.svg.png" alt="Georgia">
             </li>
           </ul>
@@ -82,13 +83,13 @@
 
         <div class="divRight">
           <ul class="options list-unstyled">
-            <li id="option4">
+            <li id="option3">
               <img class="center-block" src="images/state_location/IllinoisStateLocation.svg.png" alt="Illinois">
             </li>
-            <li id="option5">
+            <li id="option4">
               <img class="center-block" src="images/state_location/LouisianaStateLocation.svg.png" alt="Louisiana">
             </li>
-            <li id="option6">
+            <li id="option5">
               <img class="center-block" src="images/state_location/MontanaStateLocation.svg.png" alt="Montana">
             </li>
           </ul>
