@@ -25,24 +25,46 @@ $(document).ready(function(){
 
 
 /*\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-\\ 
-// Sets and initializes numberCorrect and questionNumber variables
-\\ replaceQA function replaces the current question and answer choices
-// with next state flag "question" and its corresponding 6 options
-\\ Once game is over, it reveals the user's results
-// 
-\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/*/
+ 
+Sets and initializes numberCorrect and questionNumber variables
+replaceQA function replaces the current question and answer choices
+with next state flag "question" and its corresponding 6 options
+Once game is over, it reveals the user's results
+
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/*/
 
     var numberCorrect = 0;
     var questionNumber = 0; // for cycling through the 50 questions (index based???)
+    var results = []; // save flag for when they get it right/wrong function that saves correct answers 
+
+
+    function print(div,answers) {
+        $(div).append(answers);
+      }
+
+      function displayResults(div, list){
+        var listHTML = '<ul class="list-unstyled">';
+        for (var j = 0; j < list.length; j++){
+          listHTML += '<li>' + list[j] + '</li>';
+        };
+        listHTML += '</ul>';
+        print(div,listHTML);
+      };
+    
     var replaceQA = function () {
         if (questionNumber === questions.length) {
-            $("#gameOver").removeClass("hidden"); // game over div results
+            
+            $("#gameOver").removeClass('hidden');
+
             for (i = 0; i < 6; i++) {
               $("#option" + i).html(questions[randomNumber50()].options[i]);
               $("#flag").html(questions[randomNumber50()].question); // removes the six options on the screen (need to replace with correct/incorrect answers div)
-              // do something with the '#questionStatus' (append "Results: ")
             }
+
+            displayResults("#nailedIt",correct);
+            $("#numberCorrect").text(correct.length);
+            displayResults("#almost",incorrect);
+
         } else {
             $("#flag").html(questions[questionNumber].question); // will display questions[questionNumber] 's flag
             for (i = 0; i < 6; i++) {
@@ -51,28 +73,34 @@ $(document).ready(function(){
         }
     };
 
-    //replaceQA(); // commented out first call of replaceQA because games starts on Question 1 already
     $("#next").on("click", function() {
-        var userAnswer = $('li img.selected'); // class = '.selected' removed "+" from begining of variable
-        var correctAnswer = questions[questionNumber].answer; //Grabbing answer from questions array
-        if (userAnswer === correctAnswer) {
-            numberCorrect = numberCorrect + 1;
-            $('#nailedIt').html("<li> " + userAnswer.attr('alt') + " </li>"); // instead of alert append to gameOver div (correct answer)
-        } else {
-            //alert("Sorry, you missed it! Still " + numberCorrect + " points"); // instead of alert append to gameOver div (incorrect answer)
-        }
         questionNumber = questionNumber + 1;
         replaceQA();
     });
 
+    // $("#submitAnswer").on("click", function(){
+    //   var userAnswer = $('#yourChoice').text();// 
+    //   var correctAnswer = $("#flag").children('img').attr("alt")// 
+    //     if (userAnswer === correctAnswer) {
+    //         numberCorrect = numberCorrect + 1;
+    //         $('#nailedIt').html("<li> " + correctAnswer + " </li>"); // instead of .html(), push to results array (line up with questions array)
+    //         // instead of alert append to gameOver div (correct answer)
+    //     } else {
+    //       $('#almost').html("<li> " + correctAnswer + " </li>");
+    //         // instead of alert append to gameOver div (incorrect answer)
+    //     }
+    // })
+
+    // "#next" updates questionNumber and calls replaceQA
+    // "#submitAnswer" appends the user's results to the #gameOver div
+
 /*\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-\\ 
-// Updates #questionNumber div
-\\ questionNumber begins at 0 so the "+ 1" keeps the #questionNumber div 
-// in line with the current question displayed on screen (1 - 50)
-\\
-// 
-\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/*/
+ 
+Updates #questionNumber div
+questionNumber begins at 0 so the "+ 1" keeps the #questionNumber div 
+in line with the current question displayed on screen (1 - 50)
+ 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/*/
 
   $("#next").on("click", function(){
     if (questionNumber < questions.length){
@@ -83,11 +111,11 @@ $(document).ready(function(){
 
 
 /*\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-\\ 
-// Removes Answer Choice Output in "#yourChoice"                      
-\\ Removes any added class: selected || correctAnswer || wrongAnswer
-//
-\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/*/
+ 
+Removes Answer Choice Output in "#yourChoice"                      
+Removes any added class: selected || correctAnswer || wrongAnswer
+
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/*/
 
   $("#next").on("click", function(){
     
@@ -99,12 +127,12 @@ $(document).ready(function(){
 
 
 /*\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-\\ 
-// Removes 'selected' from an incorrectly chosen state location option,                   
-\\ then adds a class of 'selected' to user's choice. Adds user's chocie
-// to the html of the page after "Your Choice: "
-//
-\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/*/
+ 
+Removes 'selected' from an incorrectly chosen state location option,                   
+then adds a class of 'selected' to user's choice. Adds user's chocie
+to the html of the page after "Your Choice: "
+
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/*/
 
   $(".options").on("click", "li img", function(){
     $("li img.selected").removeClass('selected');
@@ -112,15 +140,16 @@ $(document).ready(function(){
 
     $("#yourChoice").empty().append($(this).attr("alt"));
     console.log("State chosen: " + $(this).attr("alt"));
+    console.log($("li img.selected").attr("alt"));
   });
 
 
 /*\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-\\ 
-// adds green border to a correct answer choice (".correctAnswer")
-\\ adds red border to an incorrect answer choice (".wrongAnswer")
-//
-\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/*/
+ 
+adds green border to a correct answer choice (".correctAnswer")
+adds red border to an incorrect answer choice (".wrongAnswer")
+
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/*/
 
   $("#submitAnswer").on("click", function(){
     
@@ -128,11 +157,21 @@ $(document).ready(function(){
         $("li img.selected").addClass("correctAnswer").removeClass("selected");
         console.log("Correct. That's " + $("#flag").children('img').attr("alt") + "'s flag.");
         console.log("__________________________________________");
+        //appending results to '#nailedIt' div
+        correct.push($("#flag").children('img').attr("alt"));
+        console.log(correct);
+
+        // push correct answers into results array 
+        // check against the questions array and subtract results (filter whether they are inside nailed it or not)
+        // save that question into the nailed it array
+
     } else {
         $("li img.selected").addClass("wrongAnswer").removeClass("selected");
         console.log("Oops. That's " + $("#flag").children('img').attr("alt") + "'s flag.");
         console.log("__________________________________________");
-        // add class to answer choice that has correctly matches the flag
+        //
+        incorrect.push($("#flag").children('img').attr("alt"));
+        console.log(incorrect);
     }
   });
 
@@ -141,13 +180,8 @@ $(document).ready(function(){
 });
 
 
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // End of document.ready funciton
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
 
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -465,5 +499,20 @@ var questions = [
 
 // end of questions array
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// correct answers array
+
+var correct = [];
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// incorrect answers array
+
+var incorrect = [];
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 
 
